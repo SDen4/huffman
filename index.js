@@ -68,7 +68,10 @@ while (length > 1) {
   // );
   let index = 0;
   for (let i = 0; i < sortedArr.length; i++) {
-    if (Object.values(sortedArr[i])[0] >= value) {
+    if (
+      Object.values(sortedArr[i])[0] >= value
+      // name.length < Object.keys(sortedArr[i])[0].length
+    ) {
       index = i;
       break;
     } else {
@@ -133,7 +136,7 @@ testArrFilt1.forEach((el) =>
     : (el.nodeCode = '0'),
 );
 
-// console.log('testArrFilt1', testArrFilt1);
+console.log('testArrFilt1', testArrFilt1);
 
 // Отсечь узлы дерева
 testArrFilt1 = testArrFilt1.filter((el) => Object.keys(el)[0].length === 1);
@@ -148,7 +151,7 @@ testArrFilt1.forEach((el, i) => {
   }
   return (el.nodeCode = newCode);
 });
-// console.log('testArrFilt1', testArrFilt1);
+console.log('testArrFilt1', testArrFilt1);
 
 if (testArrFilt2.length) {
   // Определение буквы-"ствола" дерева
@@ -167,7 +170,7 @@ if (testArrFilt2.length) {
 
   // console.log('mark2', mark2);
 
-  // console.log('testArrFilt2', testArrFilt2);
+  console.log('testArrFilt2', testArrFilt2);
   // Определение ствола дерева
   testArrFilt2.forEach((el) =>
     Object.keys(el)[0].includes(mark2)

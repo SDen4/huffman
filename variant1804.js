@@ -1,10 +1,10 @@
 // const strInn = 'accepted';
-const strInn = 'aaaabbbbccd';
+// const strInn = 'aaaabbbbccd';
 // const strInn = 'accepteda';
 // const strInn = 'accepotedqsbk';
 // const strInn = 'jjacceptedas';
 // const strInn = 'abacabad';
-// const strInn = 'a     ';
+const strInn = 'a     ';
 // const strInn = 'aaaaa';
 
 // обрезка пробелов входной строки на старте
@@ -31,7 +31,8 @@ let finalArr = [];
 if (
   sortedArr.length > 2 &&
   Object.values(sortedArr[length - 1])[0] ===
-    Object.values(sortedArr[length - 2])[0]
+    Object.values(sortedArr[length - 2])[0] &&
+  sortedArr.length > Object.values(sortedArr[sortedArr.length - 1])[0]
 ) {
   // генерация первоначальных кодов верхних элементов
   sortedArr[length - 1].nodeCode = '01';
