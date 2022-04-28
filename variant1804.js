@@ -3,8 +3,8 @@
 // const strInn = 'accepteda';
 // const strInn = 'accepotedqsbk';
 // const strInn = 'jjacceptedas';
-// const strInn = 'abacabad';
-const strInn = 'a     ';
+const strInn = 'abacabad';
+// const strInn = 'a     ';
 // const strInn = 'aaaaa';
 
 // обрезка пробелов входной строки на старте

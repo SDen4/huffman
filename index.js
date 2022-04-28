@@ -59,7 +59,7 @@ while (length > 1) {
 
   sortedArr = sortedArr.filter((el) => el !== undefined);
 
-  console.log('sortedArr1', sortedArr);
+  // console.log('sortedArr1', sortedArr);
   // исправить тут!!!
   // текущий приоритет = value
   // определить индекс для вставки
@@ -69,8 +69,8 @@ while (length > 1) {
   let index = 0;
   for (let i = 0; i < sortedArr.length; i++) {
     if (
-      Object.values(sortedArr[i])[0] >= value
-      // name.length < Object.keys(sortedArr[i])[0].length
+      Object.values(sortedArr[i])[0] >= value &&
+      name.length < Object.keys(sortedArr[i])[0].length
     ) {
       index = i;
       break;
