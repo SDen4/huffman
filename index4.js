@@ -1,8 +1,9 @@
-const strInn = 'accepted';
-// const strInn = 'accepteda';
+// const strInn = 'accepted'; // 6 20
+// const strInn = 'accepteda'; // 6 23
 // const strInn = 'jjacceptedas';
-// const strInn = 'abacabad';
-// const strInn = 'aaaaa';
+// const strInn = 'abacabad'; // 4 14
+// const strInn = 'aaaaa'; // 1 5
+const strInn = 'asdfghjkl'; // 9 32
 
 // const strInn = 'accepted';
 // 01010101101100011001 = 20 - должно быть
@@ -47,7 +48,7 @@ while (iterArr.length > 1) {
 
   for (let i = 0; i < iterArr.length; i++) {
     if (Object.values(iterArr[i])[0] === value) {
-      index = i + 1;
+      index = i !== iterArr.length - 1 ? i + 1 : i;
       break;
     }
   }
