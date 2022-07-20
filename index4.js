@@ -1,6 +1,7 @@
+const strInn = 'accepted';
 // const strInn = 'accepteda';
 // const strInn = 'jjacceptedas';
-const strInn = 'abacabad';
+// const strInn = 'abacabad';
 // const strInn = 'aaaaa';
 
 // const strInn = 'accepted';
@@ -34,32 +35,32 @@ let iterArr = sortedArr.concat();
 while (iterArr.length > 1) {
   const newObj = {};
   const name = `${Object.keys(iterArr[0])[0]}${Object.keys(iterArr[1])[0]}`;
-  const value = Number(Object.values(iterArr[0])[0] + Object.values(iterArr[1])[0]);
+  const value = Number(
+    Object.values(iterArr[0])[0] + Object.values(iterArr[1])[0],
+  );
   newObj[name] = value;
-  
+
   // sort iterArr by frequency
   // iterArr = iterArr.sort((a, b) => Object.values(a)[0] < Object.values(b)[0]);
-    
+
   let index = iterArr.length;
-  
+
   for (let i = 0; i < iterArr.length; i++) {
     if (Object.values(iterArr[i])[0] === value) {
-      index = i;
+      index = i + 1;
       break;
     }
   }
   iterArr.splice(index, 0, newObj);
-  
-  
+
   sortedArr.push(newObj);
-  
+
   iterArr[0] = null;
   iterArr[1] = null;
-  iterArr = iterArr.filter(el => el !== null);
-  
+  iterArr = iterArr.filter((el) => el !== null);
+
   // console.log('iterArrEnd', iterArr);
 }
-
 
 // добавление кодов
 if (sortedArr.length > 1) {
@@ -75,24 +76,28 @@ if (sortedArr.length > 1) {
         firstCodeStart = `1${firstCodeStart}`;
         sortedArr[i].code = firstCodeStart;
         count += 1;
-      };
+      }
 
-      if (Object.keys(sortedArr[i])[0] === firstBranchArr[j] && count === firstBranchArr.length) {
+      if (
+        Object.keys(sortedArr[i])[0] === firstBranchArr[j] &&
+        count === firstBranchArr.length
+      ) {
         firstCodeStart = `${firstCodeStart.slice(0, -2)}1`;
         sortedArr[i].code = firstCodeStart;
       }
     }
-  };
+  }
 
   // определение 2 ветки или оставшегося элемента (в случае без 2 ветки)
   const firstArr = Object.keys(sortedArr[sortedArr.length - 1])[0].split('');
   const secondArr = Object.keys(sortedArr[sortedArr.length - 2])[0].split('');
   let result2Arr;
 
-  const diff = function(a1, a2) {
-      return a1.filter(i=>!a2.includes(i))
-      .concat(a2.filter(i=>!a1.includes(i)))
-  }
+  const diff = function (a1, a2) {
+    return a1
+      .filter((i) => !a2.includes(i))
+      .concat(a2.filter((i) => !a1.includes(i)));
+  };
   result2Arr = diff(firstArr, secondArr);
   // console.log('result2Arr', result2Arr);
 
@@ -108,16 +113,19 @@ if (sortedArr.length > 1) {
         secondCodeStart = `0${secondCodeStart}`;
         sortedArr[i].code = secondCodeStart;
         count2 += 1;
-      };
+      }
 
-      if (Object.keys(sortedArr[i])[0] === result2Arr[j] && count2 === result2Arr.length) {
+      if (
+        Object.keys(sortedArr[i])[0] === result2Arr[j] &&
+        count2 === result2Arr.length
+      ) {
         secondCodeStart = `${secondCodeStart.slice(0, -2)}0`;
         sortedArr[i].code = secondCodeStart;
       }
     }
-  };
+  }
 } else {
-  sortedArr[0].code = '1'
+  sortedArr[0].code = '1';
 }
 
 // console.log('sortedArr', sortedArr);
@@ -130,7 +138,10 @@ for (let i = 0; i < str.length; i++) {
 const codeStr = codeArr.join('');
 
 // отображение решения в нужной последовательности
-console.log(sortedArr.length, codeStr.length);
+console.log(
+  sortedArr.filter((el) => Object.keys(el)[0].length === 1).length,
+  codeStr.length,
+);
 for (let i = 0; i < sortedArr.length; i++) {
   if (Object.keys(sortedArr[i])[0].length === 1) {
     console.log(`${Object.keys(sortedArr[i])[0]}: ${sortedArr[i].code}`);
