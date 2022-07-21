@@ -3,7 +3,11 @@
 // const strInn = 'jjacceptedas';
 // const strInn = 'abacabad'; // 4 14
 // const strInn = 'aaaaa'; // 1 5
-const strInn = 'asdfghjkl'; // 9 32
+// const strInn = 'asdfghjkl'; // 9 32
+// const strInn = 'abbbbbbbbb'; // 2 10
+// const strInn = 'abbbbbbbbc'; // 3 12
+// const strInn = 'abbbbbbbbcccccccc'; // 3 26
+const strInn = 'aaabbbbccccddddeeeefffff';
 
 // const strInn = 'accepted';
 // 01010101101100011001 = 20 - должно быть
@@ -33,6 +37,8 @@ sortedArr.sort((a, b) => (Object.values(a)[0] > Object.values(b)[0] ? 1 : -1));
 
 let iterArr = sortedArr.concat();
 
+let marker = 0;
+
 while (iterArr.length > 1) {
   const newObj = {};
   const name = `${Object.keys(iterArr[0])[0]}${Object.keys(iterArr[1])[0]}`;
@@ -41,17 +47,30 @@ while (iterArr.length > 1) {
   );
   newObj[name] = value;
 
+  if (
+    Object.keys(iterArr[0])[0].length === 1 &&
+    Object.keys(iterArr[1])[0].length === 1
+  ) {
+    marker += 1;
+  }
+
   // sort iterArr by frequency
   // iterArr = iterArr.sort((a, b) => Object.values(a)[0] < Object.values(b)[0]);
 
   let index = iterArr.length;
 
-  for (let i = 0; i < iterArr.length; i++) {
-    if (Object.values(iterArr[i])[0] === value) {
-      index = i !== iterArr.length - 1 ? i + 1 : i;
-      break;
+  if (marker >= 2) {
+    index = 2;
+  } else {
+    for (let i = 0; i < iterArr.length; i++) {
+      if (Object.values(iterArr[i])[0] === value) {
+        // index = i !== iterArr.length - 1 ? i + 1 : i;
+        index = i;
+        break;
+      }
     }
   }
+
   iterArr.splice(index, 0, newObj);
 
   sortedArr.push(newObj);
@@ -60,7 +79,7 @@ while (iterArr.length > 1) {
   iterArr[1] = null;
   iterArr = iterArr.filter((el) => el !== null);
 
-  // console.log('iterArrEnd', iterArr);
+  console.log('iterArrEnd', iterArr);
 }
 
 // добавление кодов
@@ -149,3 +168,5 @@ for (let i = 0; i < sortedArr.length; i++) {
   }
 }
 console.log(codeStr);
+
+console.log('marker', marker);
